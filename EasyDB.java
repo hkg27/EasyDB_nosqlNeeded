@@ -1,7 +1,6 @@
 import java.sql.*;
 import java.util.*;
-import java.util.Scanner;
-public class Wa {
+public class EasyDB {
 
 	public static void main(String[] args)  {
 		int a=0;
