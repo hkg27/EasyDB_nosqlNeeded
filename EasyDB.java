@@ -12,6 +12,7 @@ public class EasyDB {
 		System.out.println("Press 1 for Creating Database");
 		System.out.println("Press 2 for delete Database");
 		System.out.println("Press 3 for create a Table ");
+		System.out.println("Press 4 to delete Table ");
 		a=sc.nextInt();
 		switch(a) {
 		case 1:
@@ -114,6 +115,48 @@ public class EasyDB {
 			{e.getMessage();
 				System.out.println(e);
 			}
+			break;
+			case 4:
+			System.out.println(" enter the database name from which you want to delete the table");
+			
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con = DriverManager.getConnection(url,"root","Password@1");
+				Statement st=con.createStatement();
+				ResultSet s=st.executeQuery("show databases");
+				System.out.println("List of databases");
+				while(s.next()) {
+					System.out.println(s.getString(1));
+				}
+				
+					
+				con.close();		}
+			
+			catch(Exception e)
+			{e.printStackTrace();
+				System.out.println(e);
+			}
+			x=sc.next();
+			url=url+" "+x;
+			
+			System.out.println("Enter Table name");
+			x=sc.next();
+			sql="drop table "+x;
+			
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con = DriverManager.getConnection(url,"root","Password@1");
+				Statement st=con.createStatement();
+				st.executeUpdate(sql);
+					
+				con.close();		
+				}
+			
+			catch(Exception e)
+			{e.getMessage();
+				System.out.println(e);
+			}
+			break;
 		}
 		
 		
